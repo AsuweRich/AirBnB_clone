@@ -51,13 +51,13 @@ Airbnb Clone is the main project of the second trimester at Holberton School. Th
 | Command |	Usage |	Example | Description |
 | ------- | ----- | ------- | ----------- |
 | create | `create <class name>` | create BaseModel | Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id. |
-| show | `show <class name>` | <id>	show BaseModel | 1234-1234-1234	Prints the string representation of an instance based on the class name and id. |
-| destroy |	`destroy <class name>` | <id>	destroy BaseModel | 1234-1234-1234	Deletes an instance based on the class name and id (save the change into the JSON file). |
+| show | `show <class name>` | <id>	show BaseModel 1234-1234-1234 |	Prints the string representation of an instance based on the class name and id. |
+| destroy |	`destroy <class name>` | <id>	destroy BaseModel 1234-1234-1234 |	Deletes an instance based on the class name and id (save the change into the JSON file). |
 | all |	`all <class name> or all` |	all BaseModel |	Prints all string representation of all instances based or not on the class name. |
-| update |	`update <class name> <id> <attribute name> "<attribute value>"` |	update BaseModel 1234-1234-1234 email "aibnb@holbertonschool.com" |	Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). |
+| update |	`update <class name> <id> <attribute name> "<attribute value>"` |	update BaseModel 1234-1234-1234 email "airbnb@holbertonschool.com" |	Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). |
 | all() |	`<class name>.all()` |	User.all() |	Retrieve all instances of a class |
 | count() |	`<class name>.count()` |	User.count() | Retrieve the number of instances of a class |
-| show() |	`<class name>.show(<id>)` |	User.show("246c227a-d5c1-403d-9bc7-6a47bb9f0f68") |	retrieve an instance based on its ID |
+| show() |	`<class name>.show(<id>)` |	User.show("246c227a-d5c1-403d-9bc7-6a47bb9f0f68") |	etrieve an instance based on its ID |
 | destroy() |	`<class name>.destroy(<id>)` |	User.destroy("246c227a-d5c1-403d-9bc7-6a47bb9f0f68") |	Destroy an instance based on his ID |
 | update() |	`<class name>.update(<id>, <attribute name>, <attribute value>)` |	User.update("38f22813-2753-4d42-b37c-57a17f1e4f88", "age", 89) |	Update an instance based on his ID |
 | update() with dictionary |	`<class name>.update(<id>, <dictionary representation>)` |	User.update("38f22813-2753-4d42-b37c-57a17f1e4f88", {'first_name': "John", "age": 89}) |	Update an instance based on his ID with a dictionary |
