@@ -1,14 +1,8 @@
 #!/usr/bin/python3
-"""
-class State that inherits from BaseModel
-"""
+"""A module containing the State model"""
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """
-        Summary: Definning the State class that inherits from BaseModel
-        Public class attributes:
-            name string - empty string
-    """
+    """Implements the State model for any state object"""
     name = ""

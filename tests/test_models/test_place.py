@@ -1,66 +1,40 @@
 #!/usr/bin/python3
-""" Unittest for Place class """
+"""Test suite for the Place class of models.place"""
 import unittest
-import json
-import pep8
-import os
+
 from models.base_model import BaseModel
-from models.amenity import Amenity
-from models.city import City
 from models.place import Place
-from models.state import State
-from models.review import Review
-from models.user import User
-from models.engine.file_storage import FileStorage
 
 
 class TestPlace(unittest.TestCase):
+    """Test cases against the Place class"""
 
     def setUp(self):
-        """SetUp method"""
-        self.place1 = Place()
-        self.place1.city_id = "Toronto"
-        self.place1.user_id = "3r45t9s323d9"
-        self.place1.name = "juan"
-        self.place1.description = "Warehouse"
-        self.place1.number_rooms = 9
-        self.place1.number_bathrooms = 5
-        self.place1.max_guest = 36
-        self.place1.price_by_night = 300
-        self.place1.latitude = 43.6
-        self.place1.longitude = 79.3
-        self.place1.amenity_ids = ["d15s64sd", "4asdad"]
+        self.place = Place()
+        self.attr_list = ["name", "user_id", "city_id", "description",
+                          "number_bathrooms", "max_guest", "number_rooms",
+                          "price_by_night", "latitude", "longitude",
+                          "amenity_ids"]
 
-    def test_base_pep8(self):
-        """Test for pep8"""
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['./models/place.py'])
-        self.assertEqual(result.total_errors, 0)
+    def test_attrs_are_class_attrs(self):
+        for attr in self.attr_list:
+            self.assertTrue(hasattr(Place, attr))
 
-    def test_docstring(self):
-        """test docstring in the file"""
-        self.assertIsNotNone(Place.__doc__)
+    def test_class_attrs(self):
+        self.assertIs(type(self.place.name), str)
+        self.assertIs(type(self.place.city_id), str)
+        self.assertIs(type(self.place.user_id), str)
+        self.assertIs(type(self.place.description), str)
+        self.assertIs(type(self.place.number_bathrooms), int)
+        self.assertIs(type(self.place.max_guest), int)
+        self.assertIs(type(self.place.number_rooms), int)
+        self.assertIs(type(self.place.price_by_night), int)
+        self.assertIs(type(self.place.latitude), float)
+        self.assertIs(type(self.place.longitude), float)
+        self.assertIs(type(self.place.amenity_ids), list)
 
-    def test_is_instance(self):
-        """Test for instantiation"""
-        self.assertIsInstance(self.place1, Place)
+        for attr in self.attr_list:
+            self.assertFalse(bool(getattr(self.place, attr)))
 
-    def test_attributes(self):
-        """Test to check attributes"""
-        self.place1.save()
-        place1_json = self.place1.to_dict()
-        my_new_place = Place(**place1_json)
-        self.assertEqual(my_new_place.id, self.place1.id)
-        self.assertEqual(my_new_place.created_at, self.place1.created_at)
-        self.assertEqual(my_new_place.updated_at, self.place1.updated_at)
-        self.assertIsNot(self.place1, my_new_place)
-
-    def test_subclass(self):
-        """Test to check the inheritance"""
-        self.assertTrue(issubclass(self.place1.__class__, BaseModel), True)
-
-    def test_save(self):
-        """Test to check save method"""
-        variable_update = self.place1.updated_at
-        self.place1.save()
-        self.assertNotEqual(variable_update, self.place1.updated_at)
+    def test_place_obj_is_a_subclass_of_basemodel(self):
+        self.assertTrue(issubclass(type(self.place), BaseModel))
